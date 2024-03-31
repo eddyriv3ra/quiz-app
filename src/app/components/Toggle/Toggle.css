@@ -1,0 +1,9 @@
+.toggle-container {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+
+label {
+  color: red;
+}
