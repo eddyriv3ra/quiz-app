@@ -1,11 +1,24 @@
 :root {
+  --font-primary: sans-serif;
+  --font-secondary: serif;
+
   /* Your default theme */
-  --background: white;
+  --purple: rgba(167, 41, 245, 1);
+  --dark-navy: rgba(49, 62, 81, 1);
+  --navy: rgba(59, 77, 102, 1);
+  --grey-navy: rgba(98, 108, 127, 1);
+  --light-bluish: rgba(171, 193, 225, 1);
+  --light-grey: rgba(244, 246, 250, 1);
+  --pure-white: rgba(255, 255, 255, 1);
+  --green: rgba(38, 215, 130, 1);
+  --red: rgba(238, 84, 84, 1);
+
+  --background: var(--light-grey);
   --foreground: black;
 }
 
 [data-theme='dark'] {
-  --background: black;
+  --background: var(--dark-navy);
   --foreground: white;
 }
 
