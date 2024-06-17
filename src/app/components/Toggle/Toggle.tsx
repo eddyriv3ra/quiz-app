@@ -12,12 +12,13 @@ const Toggle = () => {
   };
 
   return (
-    <div className="toggle-container">
+    <div className={styles.toggleContainer}>
       <Image
-        src={"/assets/fluent_weather-sunny-16-regular.svg"}
+        src={`/assets/fluent_weather-sunny-${currentTheme}.svg`}
         width={24}
         height={24}
-        alt="moon"
+        alt="sun"
+        priority
       />
       <Switch.Root
         className={styles.SwitchRoot}
@@ -28,10 +29,11 @@ const Toggle = () => {
         <Switch.Thumb className={styles.SwitchThumb} />
       </Switch.Root>
       <Image
-        src={"/assets/fluent_weather-moon-16-regular.svg"}
+        src={`/assets/fluent_weather-moon-${currentTheme}.svg`}
         width={24}
         height={24}
         alt="moon"
+        priority
       />
     </div>
   );
