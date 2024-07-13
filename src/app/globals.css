@@ -14,12 +14,14 @@
   --red: rgba(238, 84, 84, 1);
 
   --background: var(--light-grey);
-  --foreground: black;
+  --background-button: var(--pure-white);
+  --left-subtitle: var(--light-bluish);
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --background: var(--dark-navy);
-  --foreground: white;
+  --background-button: var(--navy);
+  --left-subtitle: var(--grey-navy);
 }
 
 * {

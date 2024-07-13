@@ -5,41 +5,8 @@
   justify-content: center;
 }
 
-.quizContainer {
-  width: 1160px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.rightContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.textDescription {
-  font-size: 20px;
-  font-style: italic;
-  font-weight: 400;
-  line-height: 150%;
-  color: var(--light-bluish);
-  padding-top: 48px;
-}
-
 .toggleContainer {
   padding: 97px 0;
   display: flex;
   justify-content: flex-end;
-}
-
-.title {
-  font-size: 64px;
-
-  &:first-child {
-    font-weight: 300;
-  }
-
-  &:last-child {
-    font-weight: 500;
-  }
 }

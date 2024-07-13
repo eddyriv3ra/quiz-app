@@ -1,16 +1,15 @@
 import React, { ReactNode } from "react";
-import styles from "./Button.module.scss";
+import styles from "./QuestionButton.module.scss";
 
-interface IButton {
+interface IQuestionButton {
   children: ReactNode;
   imageSrc: string;
   imageBg: string;
 }
 
-const Button = ({ children, imageSrc, imageBg }: IButton) => {
-  console.log({imageSrc})
+const QuestionButton = ({ children, imageSrc, imageBg }: IQuestionButton) => {
   const style = {
-    backgroundImage: `url(assets/icons/${imageSrc}.png), url(assets/icons/${imageBg}.png)`,
+    backgroundImage: `url(assets/images/${imageSrc}), url(assets/images/${imageBg})`,
   };
 
   return (
@@ -21,4 +20,4 @@ const Button = ({ children, imageSrc, imageBg }: IButton) => {
   );
 };
 
-export default Button;
+export default QuestionButton;
