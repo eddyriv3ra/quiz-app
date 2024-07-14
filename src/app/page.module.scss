@@ -5,8 +5,26 @@
   justify-content: center;
 }
 
-.toggleContainer {
+.topContainer {
   padding: 97px 0;
+  height: 83px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selectedSubject {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.icon {
+  width: 56px;
+  height: 56px;
+  background-repeat: no-repeat;
+  background-position: center;
 }

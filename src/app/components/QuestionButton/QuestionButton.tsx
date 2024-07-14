@@ -2,20 +2,21 @@ import React, { ReactNode } from "react";
 import styles from "./QuestionButton.module.scss";
 
 interface IQuestionButton {
-  children: ReactNode;
+  title: string;
   imageSrc: string;
   imageBg: string;
+  onClick: () => void;
 }
 
-const QuestionButton = ({ children, imageSrc, imageBg }: IQuestionButton) => {
+const QuestionButton = ({ title, imageSrc, imageBg, onClick }: IQuestionButton) => {
   const style = {
     backgroundImage: `url(assets/images/${imageSrc}), url(assets/images/${imageBg})`,
   };
 
   return (
-    <button className={styles.buttonContainer} >
+    <button className={styles.buttonContainer} onClick={onClick}>
       <div className={styles.icon} style={style} />
-      <p className={styles.text}>{children}</p>
+      <p className={styles.text}>{title}</p>
     </button>
   );
 };

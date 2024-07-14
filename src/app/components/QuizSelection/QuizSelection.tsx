@@ -1,8 +1,13 @@
 import QuestionButton from "@/app/components/QuestionButton";
 import data from "../../../mocks/data.json";
 import styles from "./QuizSelection.module.scss";
+import { useSubjectStore } from "@/app/store/useSubjectStore";
 
 function QuizSelection() {
+  const { selectSubject, subject } = useSubjectStore(
+    ({ selectSubject, subject }) => ({ selectSubject, subject })
+  );
+
   return (
     <div className={styles.quizContainer}>
       <div>
@@ -15,9 +20,13 @@ function QuizSelection() {
       <div className={styles.questionsContainer}>
         {data.quizzes.map(({ title, icon, iconBg }) => {
           return (
-            <QuestionButton key={title} imageSrc={icon} imageBg={iconBg}>
-              {title}
-            </QuestionButton>
+            <QuestionButton
+              key={title}
+              imageSrc={icon}
+              imageBg={iconBg}
+              title={title}
+              onClick={() => selectSubject({ value: title, icon, iconBg })}
+            />
           );
         })}
       </div>
