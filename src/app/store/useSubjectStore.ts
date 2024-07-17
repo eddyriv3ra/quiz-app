@@ -52,6 +52,12 @@ export const useSubjectStore = create<ISubjectStore>()(
     selectAnswer: ({ currentAnswer }) => set(() => ({ currentAnswer })),
     validateAnswer: ({ currentAnswer }) =>
       set((state) => {
+        if (currentAnswer === null) {
+          return {
+            currentAnswer: "",
+          };
+        }
+
         const newQuestions = state.subject.questions.map((value) => {
           if (value.answer === currentAnswer) {
             return {

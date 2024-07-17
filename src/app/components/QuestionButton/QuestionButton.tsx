@@ -7,7 +7,8 @@ export interface IQuestionButton extends Omit<ISubject, "questions"> {
   index?: number;
   disabled?: boolean;
   isCorrectAnswer?: boolean | null;
-  answer?: string;
+  answer?: null | string;
+  submittedAnswer?: null | string;
 }
 
 interface IStringObj {
@@ -30,10 +31,12 @@ const QuestionButton = ({
   disabled,
   isCorrectAnswer = null,
   answer,
+  submittedAnswer
 }: IQuestionButton) => {
   const { currentAnswer } = useSubjectStore(({ currentAnswer }) => ({
     currentAnswer,
   }));
+  console.log({ answer })
   const style = {
     backgroundImage: `url(assets/images/${icon}), url(assets/images/${iconBg})`,
   };
@@ -78,6 +81,14 @@ const QuestionButton = ({
               alt={answerIcon}
             />
           )}
+          {!isCorrectAnswer && submittedAnswer && answer === title ? (
+            <Image
+              src="/assets/images/checkmark.svg"
+              width={40}
+              height={40}
+              alt={answerIcon}
+            />
+          ) : null}
         </>
       )}
     </button>

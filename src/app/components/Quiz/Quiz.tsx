@@ -3,6 +3,7 @@ import styles from "./Quiz.module.scss";
 import { useSubjectStore } from "@/app/store/useSubjectStore";
 import Button from "../Button";
 import ProgressBar from "@/app/components/ProgressBar";
+import Image from "next/image";
 
 function QuizSelection() {
   const {
@@ -86,20 +87,29 @@ function QuizSelection() {
                       : null,
                   answer: currentQuestion.answer,
                   onClick: () => selectAnswer({ currentAnswer: option }),
+                  submittedAnswer: submittedAnswer,
                 };
 
             return <QuestionButton key={option.title || option} {...props} />;
           })}
         </div>
         {currentQuestion ? (
-          <Button
-            disabled={typeof currentAnswer !== "string"}
-            onClick={submittedAnswer ? nextQuestion : onValidateAnswer}
-          >
+          <Button onClick={submittedAnswer ? nextQuestion : onValidateAnswer}>
             {typeof currentQuestion.correctAnswerSelected === "boolean"
               ? "Next Question"
               : "Submit Answer"}
           </Button>
+        ) : null}
+        {typeof currentAnswer === "string" && currentAnswer.length === 0 ? (
+          <div className={styles.noAnswer}>
+            <Image
+              src="/assets/images/dismiss.svg"
+              width={40}
+              height={40}
+              alt="dismiss"
+            />
+            <p>Please select an answer</p>
+          </div>
         ) : null}
       </div>
     </div>

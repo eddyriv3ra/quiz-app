@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import styles from "./Button.module.scss";
 
 interface IButton {
-  disabled: boolean;
+  disabled?: boolean;
   children: ReactNode;
   onClick: () => void;
 }
