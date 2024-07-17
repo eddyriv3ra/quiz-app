@@ -13,8 +13,9 @@ function QuizSelection() {
     currentAnswer,
     validateAnswer,
     submittedAnswer,
+    nextQuestion,
   } = useSubjectStore((state) => state);
-
+  
   const currentQuestion = subject.questions.find(
     (_, index) => index === currentQuestionIndex
   );
@@ -84,12 +85,8 @@ function QuizSelection() {
         </div>
         {currentQuestion ? (
           <Button
-            disabled={
-              (typeof currentAnswer === "string" &&
-                typeof currentQuestion.correctAnswerSelected === "boolean") ||
-              currentAnswer === null
-            }
-            onClick={onValidateAnswer}
+            disabled={typeof currentAnswer !== "string"}
+            onClick={submittedAnswer ? nextQuestion : onValidateAnswer}
           >
             {typeof currentQuestion.correctAnswerSelected === "boolean"
               ? "Next Question"

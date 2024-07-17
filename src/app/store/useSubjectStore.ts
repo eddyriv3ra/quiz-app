@@ -23,13 +23,13 @@ interface IQuizzes extends ISubject {
 interface ISubjectStore {
   subject: ISubject;
   selectSubject: ({ title, icon, iconBg }: ISubject) => void;
-  selectQuestion: (index: number) => void;
   quizzes: IQuizzes[];
   currentQuestionIndex: number | null;
   selectAnswer: ({ currentAnswer }: { currentAnswer: string }) => void;
   currentAnswer: string | null;
   validateAnswer: ({ currentAnswer }: { currentAnswer: string | null }) => void;
   submittedAnswer: string | null;
+  nextQuestion: () => void;
 }
 
 export const useSubjectStore = create<ISubjectStore>()(
@@ -49,13 +49,6 @@ export const useSubjectStore = create<ISubjectStore>()(
         subject: { title, icon, iconBg, questions },
         currentQuestionIndex: 0,
       })),
-    selectQuestion: () =>
-      set((state) => ({
-        currentQuestionIndex:
-          state.currentQuestionIndex === null
-            ? 0
-            : state.currentQuestionIndex + 1,
-      })),
     selectAnswer: ({ currentAnswer }) => set(() => ({ currentAnswer })),
     validateAnswer: ({ currentAnswer }) =>
       set((state) => {
@@ -70,14 +63,20 @@ export const useSubjectStore = create<ISubjectStore>()(
             ...value,
           };
         });
-    
+
         return {
           submittedAnswer: currentAnswer,
           subject: {
             ...state.subject,
-            questions: newQuestions
-          }
-        }
+            questions: newQuestions,
+          },
+        };
       }),
+    nextQuestion: () =>
+      set((state) => ({
+        currentAnswer: null,
+        submittedAnswer: null,
+        currentQuestionIndex: (state.currentQuestionIndex || 0) + 1,
+      })),
   }))
 );
