@@ -1,7 +1,8 @@
 import QuestionButton from "@/app/components/QuestionButton";
-import styles from "./QuizSelection.module.scss";
+import styles from "./Quiz.module.scss";
 import { useSubjectStore } from "@/app/store/useSubjectStore";
 import Button from "../Button";
+import ProgressBar from "@/app/components/ProgressBar";
 
 function QuizSelection() {
   const {
@@ -15,7 +16,7 @@ function QuizSelection() {
     submittedAnswer,
     nextQuestion,
   } = useSubjectStore((state) => state);
-  
+
   const currentQuestion = subject.questions.find(
     (_, index) => index === currentQuestionIndex
   );
@@ -26,17 +27,24 @@ function QuizSelection() {
     validateAnswer({ currentAnswer });
   };
 
+  const progressBarWidth = currentQuestionIndex
+    ? (currentQuestionIndex * 100) / subject.questions.length
+    : 0;
+
   return (
     <div className={styles.quizContainer}>
       <div>
         {currentQuestion ? (
-          <div className={styles.currentQuestionContainer}>
-            <div className={styles.subjectPadding}>
-              <p className={styles.textDescription}>{`Question ${
-                currentQuestionIndex !== null && currentQuestionIndex + 1
-              } of ${subject.questions.length}`}</p>
+          <div className={styles.leftContainer}>
+            <div className={styles.currentQuestionContainer}>
+              <div className={styles.subjectPadding}>
+                <p className={styles.textDescription}>{`Question ${
+                  currentQuestionIndex !== null && currentQuestionIndex + 1
+                } of ${subject.questions.length}`}</p>
+              </div>
+              <p className={styles.question}>{currentQuestion.question}</p>
             </div>
-            <p className={styles.question}>{currentQuestion.question}</p>
+            <ProgressBar progress={progressBarWidth} />
           </div>
         ) : (
           <>
@@ -90,9 +98,7 @@ function QuizSelection() {
           >
             {typeof currentQuestion.correctAnswerSelected === "boolean"
               ? "Next Question"
-              : currentAnswer
-              ? "Submit Answer"
-              : "Select Answer"}
+              : "Submit Answer"}
           </Button>
         ) : null}
       </div>

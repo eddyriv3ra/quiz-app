@@ -10,6 +10,13 @@
   gap: 24px;
 }
 
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 452px;
+}
+
 .currentQuestionContainer {
   width: 465px;
 }

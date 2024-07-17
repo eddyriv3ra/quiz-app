@@ -2,7 +2,7 @@
 import styles from "./page.module.scss";
 import dynamic from "next/dynamic";
 import { Rubik } from "next/font/google";
-import QuizSelection from "./components/QuizSelection";
+import QuizSelection from "./components/Quiz";
 import { useSubjectStore } from "./store/useSubjectStore";
 
 const NoSSRToggle = dynamic(() => import("./components/Toggle"), {
