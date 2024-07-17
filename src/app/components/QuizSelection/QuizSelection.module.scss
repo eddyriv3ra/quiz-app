@@ -10,23 +10,40 @@
   gap: 24px;
 }
 
+.currentQuestionContainer {
+  width: 465px;
+}
+
 .textDescription {
   font-size: 20px;
   font-style: italic;
   font-weight: 400;
   line-height: 150%;
   color: var(--left-subtitle);
+}
+
+.question {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 120%;
+}
+
+.noSubjectPadding {
   padding-top: 48px;
+}
+
+.subjectPadding {
+  padding-bottom: 27px;
 }
 
 .title {
   font-size: 64px;
 
-   & > p:first-child {
+  & > p:first-child {
     font-weight: 300;
-   }
+  }
 
-   & > p:last-child {
+  & > p:last-child {
     font-weight: 500;
-   }
+  }
 }

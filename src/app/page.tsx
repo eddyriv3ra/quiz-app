@@ -16,16 +16,16 @@ export default function Home() {
   const style = {
     backgroundImage: `url(assets/images/${subject.icon}), url(assets/images/${subject.iconBg})`,
   };
-  
+
   return (
     <main className={`${styles.main} ${rubik.className}`}>
       <div>
         <div className={styles.topContainer}>
           <div className={styles.selectedSubject}>
-            {subject.value ? (
+            {subject.title ? (
               <>
                 <div className={styles.icon} style={style} />
-                <p>{subject.value}</p>
+                <p>{subject.title}</p>
               </>
             ) : null}
           </div>

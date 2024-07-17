@@ -12,9 +12,21 @@
   border-style: none;
 }
 
+.buttonContainerHover {
+  &:hover {
+    & > .noImageBg {
+      background-color: #f6e7ff;
+      & > p {
+        color: var(--purple);
+      }
+    }
+  }
+}
+
 .icon {
   width: 56px;
   height: 56px;
+  min-width: 56px;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -22,4 +34,50 @@
 .text {
   font-size: 28px;
   font-weight: 500;
+  width: 364px;
+  text-align: start;
+}
+
+.noImageBg {
+  display: flex;
+  background-color: var(--light-grey);
+  border-radius: 8px;
+  box-shadow: 0px 16px 40px 0px rgba(49, 62, 81, 0.14);
+  align-items: center;
+  justify-content: center;
+}
+
+.noImageBgSelected {
+  background-color: var(--purple);
+
+  & > p:first-child {
+    color: var(--pure-white);
+  }
+}
+
+.index {
+  color: var(--grey-navy);
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.selectedAnswer {
+  outline: 3px solid var(--purple);
+}
+
+.isRightAnswer {
+  outline: 3px solid var(--green);
+  display: flex;
+
+  & > div {
+    background-color: var(--green);
+  }
+}
+
+.isWrongAnswer {
+  outline: 3px solid var(--red);
+
+  & > div {
+    background-color: var(--red);
+  }
 }
