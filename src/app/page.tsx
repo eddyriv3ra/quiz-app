@@ -2,7 +2,7 @@
 import styles from "./page.module.scss";
 import dynamic from "next/dynamic";
 import { Rubik } from "next/font/google";
-import QuizSelection from "./components/Quiz";
+import Quiz from "./components/Quiz";
 import { useSubjectStore } from "./store/useSubjectStore";
 import Badge from "./components/Badge";
 
@@ -30,7 +30,7 @@ export default function Home() {
             <NoSSRToggle />
           </div>
         </div>
-        <QuizSelection />
+        <Quiz />
       </div>
     </main>
   );

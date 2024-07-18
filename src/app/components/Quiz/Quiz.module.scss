@@ -62,7 +62,7 @@
   font-size: 24px;
   font-weight: 400;
   line-height: 150%;
-  color: var(--light-grey);
+  color: var(--alert);
   margin-top: 32px;
   gap: 8px;
 }
@@ -77,7 +77,7 @@
 .scoreContainer {
   width: 100%;
   height: 388px;
-  background-color: var(--navy);
+  background-color: var(--background-button);
   box-shadow: 0px 16px 40px 0px rgba(49, 62, 81, 0.14);
   border-radius: 24px;
   display: flex;
@@ -99,7 +99,7 @@
 .totalQuestions {
   font-size: 24px;
   line-height: 150%;
-  color: var(--light-bluish);
+  color: var(--left-subtitle);
 }
 
 .buttonQuiz {

@@ -34,13 +34,13 @@ function QuizSelection() {
   const progressBarWidth = currentQuestionIndex
     ? (currentQuestionIndex * 100) / subject.questions.length
     : 0;
-  
+
   const totalCorrectAnswers = subject.questions.reduce((acc, current) => {
     if (current.correctAnswerSelected) {
       return acc + 1;
     }
     return acc;
-  }, 0)
+  }, 0);
 
   if (completed) {
     return (
@@ -58,7 +58,9 @@ function QuizSelection() {
             />
             <div>
               <p className={styles.totalRightAnswers}>{totalCorrectAnswers}</p>
-              <p className={styles.totalQuestions}>out of {subject.questions.length}</p>
+              <p className={styles.totalQuestions}>
+                out of {subject.questions.length}
+              </p>
             </div>
           </div>
           <Button onClick={playAgain}>Play Again</Button>
@@ -89,7 +91,7 @@ function QuizSelection() {
               <p>Frontend Quiz!</p>
             </div>
             <p
-              className={`${(styles.textDescription, styles.noSubjectPadding)}`}
+              className={`${styles.textDescription} ${styles.noSubjectPadding}`}
             >
               Pick a subject to get started.
             </p>

@@ -15,13 +15,19 @@
 
   --background: var(--light-grey);
   --background-button: var(--pure-white);
-  --left-subtitle: var(--light-bluish);
+  --left-subtitle: var(--grey-navy);
+  --progress-background: var(--pure-white);
+  --question-text: var(--dark-navy);
+  --alert: var(--red);
 }
 
 [data-theme="dark"] {
   --background: var(--dark-navy);
   --background-button: var(--navy);
-  --left-subtitle: var(--grey-navy);
+  --left-subtitle: var(--light-bluish);
+  --progress-background: var(--navy);
+  --question-text: var(--pure-white);
+  --alert: var(--light-grey);
 }
 
 * {
