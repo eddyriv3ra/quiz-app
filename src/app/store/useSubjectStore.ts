@@ -30,6 +30,8 @@ interface ISubjectStore {
   validateAnswer: ({ currentAnswer }: { currentAnswer: string | null }) => void;
   submittedAnswer: string | null;
   nextQuestion: () => void;
+  completed: boolean;
+  playAgain: () => void;
 }
 
 export const useSubjectStore = create<ISubjectStore>()(
@@ -44,6 +46,7 @@ export const useSubjectStore = create<ISubjectStore>()(
     currentQuestionIndex: null,
     currentAnswer: null,
     submittedAnswer: null,
+    completed: false,
     selectSubject: ({ title, icon, iconBg, questions }) =>
       set(() => ({
         subject: { title, icon, iconBg, questions },
@@ -52,14 +55,14 @@ export const useSubjectStore = create<ISubjectStore>()(
     selectAnswer: ({ currentAnswer }) => set(() => ({ currentAnswer })),
     validateAnswer: ({ currentAnswer }) =>
       set((state) => {
-        if (currentAnswer === null) {
+        if (currentAnswer === null || currentAnswer.length === 0 ) {
           return {
             currentAnswer: "",
           };
         }
 
-        const newQuestions = state.subject.questions.map((value) => {
-          if (value.answer === currentAnswer) {
+        const newQuestions = state.subject.questions.map((value, index) => {
+          if (state.currentQuestionIndex === index) {
             return {
               ...value,
               correctAnswerSelected: value.answer === currentAnswer,
@@ -79,10 +82,31 @@ export const useSubjectStore = create<ISubjectStore>()(
         };
       }),
     nextQuestion: () =>
-      set((state) => ({
-        currentAnswer: null,
-        submittedAnswer: null,
-        currentQuestionIndex: (state.currentQuestionIndex || 0) + 1,
+      set((state) => {
+        if (state.subject.questions.length - 1 === state.currentQuestionIndex) {
+          return {
+            currentAnswer: null,
+            submittedAnswer: null,
+            completed: true,
+          };
+        }
+
+        return {
+          currentAnswer: null,
+          submittedAnswer: null,
+          currentQuestionIndex: (state.currentQuestionIndex || 0) + 1,
+        };
+      }),
+    playAgain: () =>
+      set(() => ({
+        currentQuestionIndex: null,
+        completed: false,
+        subject: {
+          title: null,
+          icon: null,
+          iconBg: null,
+          questions: [],
+        },
       })),
   }))
 );

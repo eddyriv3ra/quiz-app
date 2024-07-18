@@ -4,6 +4,7 @@ import { useSubjectStore } from "@/app/store/useSubjectStore";
 import Button from "../Button";
 import ProgressBar from "@/app/components/ProgressBar";
 import Image from "next/image";
+import Badge from "../Badge";
 
 function QuizSelection() {
   const {
@@ -16,6 +17,8 @@ function QuizSelection() {
     validateAnswer,
     submittedAnswer,
     nextQuestion,
+    completed,
+    playAgain,
   } = useSubjectStore((state) => state);
 
   const currentQuestion = subject.questions.find(
@@ -31,6 +34,38 @@ function QuizSelection() {
   const progressBarWidth = currentQuestionIndex
     ? (currentQuestionIndex * 100) / subject.questions.length
     : 0;
+  
+  const totalCorrectAnswers = subject.questions.reduce((acc, current) => {
+    if (current.correctAnswerSelected) {
+      return acc + 1;
+    }
+    return acc;
+  }, 0)
+
+  if (completed) {
+    return (
+      <div className={styles.quizContainer}>
+        <div className={styles.title}>
+          <p>Quiz completed</p>
+          <p>You scored...</p>
+        </div>
+        <div className={styles.completedRightContainer}>
+          <div className={styles.scoreContainer}>
+            <Badge
+              icon={subject.icon}
+              iconBg={subject.iconBg}
+              title={subject.title}
+            />
+            <div>
+              <p className={styles.totalRightAnswers}>{totalCorrectAnswers}</p>
+              <p className={styles.totalQuestions}>out of {subject.questions.length}</p>
+            </div>
+          </div>
+          <Button onClick={playAgain}>Play Again</Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.quizContainer}>
@@ -94,11 +129,13 @@ function QuizSelection() {
           })}
         </div>
         {currentQuestion ? (
-          <Button onClick={submittedAnswer ? nextQuestion : onValidateAnswer}>
-            {typeof currentQuestion.correctAnswerSelected === "boolean"
-              ? "Next Question"
-              : "Submit Answer"}
-          </Button>
+          <div className={styles.buttonQuiz}>
+            <Button onClick={submittedAnswer ? nextQuestion : onValidateAnswer}>
+              {typeof currentQuestion.correctAnswerSelected === "boolean"
+                ? "Next Question"
+                : "Submit Answer"}
+            </Button>
+          </div>
         ) : null}
         {typeof currentAnswer === "string" && currentAnswer.length === 0 ? (
           <div className={styles.noAnswer}>

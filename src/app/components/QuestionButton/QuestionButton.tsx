@@ -36,7 +36,7 @@ const QuestionButton = ({
   const { currentAnswer } = useSubjectStore(({ currentAnswer }) => ({
     currentAnswer,
   }));
-  console.log({ answer })
+  
   const style = {
     backgroundImage: `url(assets/images/${icon}), url(assets/images/${iconBg})`,
   };
