@@ -1,5 +1,4 @@
 .buttonContainer {
-  width: 564px;
   height: 96px;
   background: var(--background-button);
   border-radius: 24px;
@@ -34,7 +33,7 @@
 .text {
   font-size: 28px;
   font-weight: 500;
-  width: 364px;
+  width: 100%;
   text-align: start;
   color: var(--question-text)
 }

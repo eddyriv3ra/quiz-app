@@ -1,3 +1,5 @@
+@use "@/app/styles/media-query" as *;
+
 .icon {
   width: 56px;
   height: 56px;
@@ -11,4 +13,5 @@
   gap: 24px;
   font-size: 28px;
   font-weight: 500;
+  line-height: 100%;
 }

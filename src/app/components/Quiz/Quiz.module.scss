@@ -1,13 +1,33 @@
+@use "@/app/styles/media-query" as *;
+
 .quizContainer {
   width: 1160px;
   display: flex;
   justify-content: space-between;
+
+  @include mq(md) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 62px;
+  }
+}
+
+.descriptionsContainer {
+  @include mq(md) {
+    width: 100%;
+  }
 }
 
 .questionsContainer {
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  @include mq(md) {
+    padding-top: 64px;
+  }
 }
 
 .leftContainer {
@@ -15,10 +35,19 @@
   flex-direction: column;
   justify-content: space-between;
   height: 452px;
+
+  @include mq(md) {
+    height: auto;
+  }
 }
 
 .currentQuestionContainer {
   width: 465px;
+
+  @include mq(md) {
+    width: 100%;
+    padding-bottom: 40px;
+  }
 }
 
 .textDescription {
@@ -36,7 +65,11 @@
 }
 
 .noSubjectPadding {
-  padding-top: 48px;
+  padding-top: 49px;
+
+  @include mq(md) {
+    padding-top: 16px;
+  }
 }
 
 .subjectPadding {
@@ -72,6 +105,11 @@
   flex-direction: column;
   gap: 32px;
   width: 564px;
+
+  @include mq(md) {
+    width: 100%;
+    padding-top: 64px;
+  }
 }
 
 .scoreContainer {
@@ -104,4 +142,18 @@
 
 .buttonQuiz {
   margin-top: 32px;
+}
+
+.rightContainer {
+  width: 564px;
+
+  @include mq(md) {
+    width: 100%;
+  }
+}
+
+.completedText {
+  @include mq(md) {
+    width: 100%;
+  }
 }

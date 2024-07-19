@@ -1,8 +1,14 @@
+@use "@/app/styles/media-query" as *;
+
 .main {
   min-height: 100vh;
   background: var(--background);
   display: flex;
   justify-content: center;
+
+  @include mq(md) {
+    display: block;
+  }
 }
 
 .topContainer {
@@ -11,5 +17,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
 
+  @include mq(md) {
+    padding: 54px 62px;
+  }
+}

@@ -45,7 +45,7 @@ function QuizSelection() {
   if (completed) {
     return (
       <div className={styles.quizContainer}>
-        <div className={styles.title}>
+        <div className={`${styles.title} ${styles.completedText}`}>
           <p>Quiz completed</p>
           <p>You scored...</p>
         </div>
@@ -71,7 +71,7 @@ function QuizSelection() {
 
   return (
     <div className={styles.quizContainer}>
-      <div>
+      <div className={styles.descriptionsContainer}>
         {currentQuestion ? (
           <div className={styles.leftContainer}>
             <div className={styles.currentQuestionContainer}>
@@ -98,7 +98,7 @@ function QuizSelection() {
           </>
         )}
       </div>
-      <div>
+      <div className={styles.rightContainer}>
         <div className={styles.questionsContainer}>
           {questions.map((option: any, index: number) => {
             const props = !currentQuestion
