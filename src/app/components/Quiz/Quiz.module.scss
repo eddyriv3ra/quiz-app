@@ -31,10 +31,11 @@
 
   @include mq(md) {
     padding-top: 64px;
-  }
+}
 
   @include mq(sm) {
     padding-top: 40px;
+    gap: 12px;
   }
 }
 
@@ -123,6 +124,11 @@
   color: var(--alert);
   margin-top: 32px;
   gap: 8px;
+
+  @include mq(sm) {
+    font-size: 18px;
+    margin-top: 12px;
+  }
 }
 
 .completedRightContainer {
@@ -167,6 +173,10 @@
 
 .buttonQuiz {
   margin-top: 32px;
+
+  @include mq(sm) {
+    margin-top: 12px;
+  }
 }
 
 .rightContainer {

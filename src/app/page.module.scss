@@ -5,7 +5,7 @@
   background: var(--background);
   display: flex;
   justify-content: center;
-  min-width: 375px;
+  min-width: 350px;
 
   @include mq(md) {
     display: block;
