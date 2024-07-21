@@ -1,3 +1,5 @@
+@use "@/app/styles/media-query" as *;
+
 .button {
   background-color: var(--purple);
   height: 92px;
@@ -8,6 +10,7 @@
   font-size: 28px;
   font-style: normal;
   font-weight: 500;
+  line-height: 100%;
   color: var(--pure-white);
 
   &:hover {
@@ -17,5 +20,11 @@
         rgba(255, 255, 255, 0.5) 100%
       ),
       var(--purple, #a729f5);
+  }
+
+  @include mq(sm) {
+    height: 56px;
+    border-radius: 12px;
+    font-size: 18px;
   }
 }

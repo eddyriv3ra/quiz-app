@@ -5,6 +5,7 @@
   background: var(--background);
   display: flex;
   justify-content: center;
+  min-width: 375px;
 
   @include mq(md) {
     display: block;
@@ -20,5 +21,9 @@
 
   @include mq(md) {
     padding: 54px 62px;
+  }
+
+  @include mq(sm) {
+    padding: 16px 24px;
   }
 }

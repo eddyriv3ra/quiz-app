@@ -1,3 +1,5 @@
+@use "@/app/styles/media-query" as *;
+
 .buttonContainer {
   height: 96px;
   background: var(--background-button);
@@ -9,6 +11,13 @@
   padding: 20px;
   cursor: pointer;
   border-style: none;
+
+  @include mq(sm) {
+    gap: 16px;
+    height: 64px;
+    border-radius: 12px;
+    padding: 12px;
+  }
 }
 
 .buttonContainerHover {
@@ -28,6 +37,12 @@
   min-width: 56px;
   background-repeat: no-repeat;
   background-position: center;
+
+  @include mq(sm) {
+    height: 40px;
+    min-width: 40px;
+    width: 40px;
+  }
 }
 
 .text {
@@ -35,7 +50,11 @@
   font-weight: 500;
   width: 100%;
   text-align: start;
-  color: var(--question-text)
+  color: var(--question-text);
+
+  @include mq(sm) {
+    font-size: 18px;
+  }
 }
 
 .noImageBg {
@@ -69,7 +88,7 @@
   outline: 3px solid var(--green);
   display: flex;
 
-  & > div {
+  & > div:first-child {
     background-color: var(--green);
   }
 }
@@ -77,7 +96,18 @@
 .isWrongAnswer {
   outline: 3px solid var(--red);
 
-  & > div {
+  & > div:first-child {
     background-color: var(--red);
+  }
+}
+
+.rightIconContainer {
+  width: 40px;
+  height: 40px;
+  position: relative;
+
+  @include mq(sm) {
+    width: 32px;
+    height: 32px;
   }
 }

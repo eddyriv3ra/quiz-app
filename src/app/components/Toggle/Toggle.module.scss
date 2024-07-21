@@ -1,5 +1,18 @@
+@use "@/app/styles/media-query" as *;
+
 .toggleContainer {
-  display: inline-block;
+  display: flex;
+}
+
+.imageContainer {
+  width: 24px;
+  height: 24px;
+  position: relative;
+
+  @include mq(sm) {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .SwitchRoot {
@@ -11,8 +24,13 @@
   position: relative;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   margin: 0 16px;
-}
 
+  @include mq(sm) {
+    margin: 0 8px;
+    width: 32px;
+    height: 20px;
+  }
+}
 
 .SwitchThumb {
   display: block;
@@ -24,13 +42,16 @@
   transition: transform 100ms;
   transform: translateX(4px);
   will-change: transform;
-}
-.SwitchThumb[data-state='checked'] {
-  transform: translateX(24px);
-}
 
-.Label {
-  color: white;
-  font-size: 15px;
-  line-height: 1;
+  @include mq(sm) {
+    width: 12px;
+    height: 12px;
+  }
+}
+.SwitchThumb[data-state="checked"] {
+  transform: translateX(24px);
+
+  @include mq(sm) {
+    transform: translateX(18px);
+  }
 }

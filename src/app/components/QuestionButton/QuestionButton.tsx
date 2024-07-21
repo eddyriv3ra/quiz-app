@@ -31,12 +31,12 @@ const QuestionButton = ({
   disabled,
   isCorrectAnswer = null,
   answer,
-  submittedAnswer
+  submittedAnswer,
 }: IQuestionButton) => {
   const { currentAnswer } = useSubjectStore(({ currentAnswer }) => ({
     currentAnswer,
   }));
-  
+
   const style = {
     backgroundImage: `url(assets/images/${icon}), url(assets/images/${iconBg})`,
   };
@@ -73,22 +73,24 @@ const QuestionButton = ({
             <p className={styles.index}>{questionIndex[index + 1]}</p>
           </div>
           <p className={styles.text}>{title}</p>
-          {isCorrectAnswer === null ? null : (
-            <Image
-              src={`/assets/images/${answerIcon}.svg`}
-              width={40}
-              height={40}
-              alt={answerIcon}
-            />
-          )}
-          {!isCorrectAnswer && submittedAnswer && answer === title ? (
-            <Image
-              src="/assets/images/checkmark.svg"
-              width={40}
-              height={40}
-              alt={answerIcon}
-            />
-          ) : null}
+          <div className={styles.rightIconContainer}>
+            {isCorrectAnswer === null ? null : (
+              <Image
+                src={`/assets/images/${answerIcon}.svg`}
+                alt={answerIcon}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            )}
+            {!isCorrectAnswer && submittedAnswer && answer === title ? (
+              <Image
+                src="/assets/images/checkmark.svg"
+                alt={answerIcon}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            ) : null}
+          </div>
         </>
       )}
     </button>
